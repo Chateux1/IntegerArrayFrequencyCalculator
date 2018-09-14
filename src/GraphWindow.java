@@ -27,7 +27,7 @@ public class GraphWindow extends JFrame {
 				if (frequencies[j] > reusableFrequency) {
 					reusableFrequency = frequencies[j];
 				}
-				for (int k = 0; i < reusableFrequency; i++) {
+				for (int k = 0; k < reusableFrequency; k++) {
 					
 					tableData[i][j] = "*";
 				}
