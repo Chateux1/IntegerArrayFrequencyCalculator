@@ -1,20 +1,38 @@
+import java.util.Arrays;
 import javax.swing.*;
 
 public class GraphWindow extends JFrame {
 	
-	public GraphWindow() {
-		
-		DefaultListModel dlm = new DefaultListModel();
-		JList list = new JList(dlm);
-		JScrollPane scrollPane = new JScrollPane(list);
-		
-		int[] test = {1,2,5,4,3,1};
-		for (int value : test) {
-			dlm.addElement(value);
-		}
-		add(scrollPane);
-		pack();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
+	private JTable table;
+	private JPanel panel;
+	private int[] labels;
+	private String[][] tableData;
+	private int numberOfColumns, numberOfRows;
+	
+	private void setNumberOfColumns(int number) {
+		numberOfColumns = number;
 	}
+	
+	private void setNumberOfRows(int number) {
+		numberOfRows = number;
+	}
+	
+	private void setTableData(int maxFrequency, int[] frequencies) {
+		
+		for (int i = 0; i < frequencies.length; i++) {
+			
+			for (int j = 0; j < maxFrequency; j++) {
+				
+				int reusableFrequency = 0;
+				if (frequencies[j] > reusableFrequency) {
+					reusableFrequency = frequencies[j];
+				}
+				for (int k = 0; i < reusableFrequency; i++) {
+					
+					tableData[i][j] = "*";
+				}
+			}
+		}
+	}
+	public GraphWindow() {}
 }

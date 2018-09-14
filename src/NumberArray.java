@@ -5,6 +5,8 @@ public class NumberArray {
 	private int[] values, frequencies, originalArray;
 	private int numberOfValues;
 	
+	public NumberArray() {}
+	
 	private void setEmptyInputArray() {
 		for (int i = 0; i < getNumberOfValues(); i++) {
 			setValue(i, i);
