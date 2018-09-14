@@ -11,5 +11,6 @@ public class Main {
 		NumberArray test = new NumberArray(array);
 		System.out.println(Arrays.toString(test.getValues()));
 		System.out.println(Arrays.toString(test.getFrequencies()));
+		
 	}
 }
