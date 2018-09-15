@@ -40,6 +40,9 @@ public class GraphWindow {
 		DefaultTableModel model = new DefaultTableModel(maxFreq+1, values.length) ;
 		table = new JTable(model);
 		table.setTableHeader(null);
+		table.setShowGrid(false);
+		//table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
 		setTableData(maxFreq, columns, frequencies);
 		
 		//JScrollPane tableContainer = new JScrollPane(table);
