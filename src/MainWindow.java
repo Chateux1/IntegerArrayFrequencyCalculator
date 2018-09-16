@@ -11,6 +11,12 @@ public class MainWindow extends JFrame {
 	private JTextField inputField;
 	private JButton enterButton, resetButton, continueButton;
 	private GroupLayout layout;
+	private int[] inputArrayOfNumbers;
+	
+	public int[] getUserInput() {
+		
+		return inputArrayOfNumbers;
+	}
 	
 	public MainWindow() {
 		
@@ -56,6 +62,14 @@ public class MainWindow extends JFrame {
 		//equal button size
 		layout.linkSize(SwingConstants.HORIZONTAL, enterButton, continueButton, resetButton);
 		
+		resetButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				    userData.setText("");
+				    inputField.setText("");
+			}
+		});
 		enterButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +78,7 @@ public class MainWindow extends JFrame {
 				String inputError = "none";
 				String inputString = inputField.getText();
 				String[] inputArrayOfStrings = inputString.split(",");
-				int[] inputArrayOfNumbers = new int[inputArrayOfStrings.length];
+				inputArrayOfNumbers = new int[inputArrayOfStrings.length];
 				
 				//check if entered string is all integers
 				for (int i = 0; i < inputArrayOfStrings.length; i++)
