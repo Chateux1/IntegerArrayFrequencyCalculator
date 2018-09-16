@@ -57,6 +57,14 @@ public class MainWindow extends JFrame {
 		//equal button size
 		layout.linkSize(SwingConstants.HORIZONTAL, enterButton, continueButton, resetButton);
 		
+		resetButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				    userData.setText("");
+				    inputField.setText("");
+			}
+		});
 		enterButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
