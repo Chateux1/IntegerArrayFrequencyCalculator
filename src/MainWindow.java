@@ -23,8 +23,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() {
 		
 		//create initialised variables
-		inputInfo = new JLabel("Enter an array (up to 20) of integers (1-100) "
-							 + "separated by commas and press 'Enter'");
+		inputInfo = new JLabel("Enter an array of integers separated by commas and press 'Enter'");
 		inputField = new JTextField();
 		userData = new JLabel("");
 		enterButton = new JButton("Enter");
