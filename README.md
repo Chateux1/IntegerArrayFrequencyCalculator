@@ -1,34 +1,18 @@
 Integer Value Frequency Calculator
 ==================================
 
-**The goal of this project is to visually display how frequent each integer
-appears in an array.** 
+Console input development
+-------------------------
 
-*The first commit was made not at the beginning of the project so some
-development stages are lost. This is a beginner project to learn java from scratch.*
+This is a branch to develop the dialog that should happen when the user choose to use the console as input.
 
-Version 1.0
------------
+- Output message appears
+- The user is able to input data into console
+- the input data is displayed 
+- array with missing integers in between (if there are any) is displayed
+- array with calculated frequencies is displayed
 
-**Main Window**
+Additional (optional):
 
-- three buttons to input and reset data and to open visual representation
-- input field
-- label with information about what should be entered
-
-**Number Array**
-
-- frequencies are calculated here
-
-**GraphWindow**
-
-- when button continue is pressed in main window a new JFrame appears with visual frequency representation
-
-TO DO
------
-
-- 'Enter' and 'Continue' buttons should probably be merged
-- 'NumberArray' class has many get/set methods, they should be checked whether are needed
-- 'GraphWindow' does not display zeros as per assignment requirements, but it seems logical to include it. Otherwise there should validation to not allow zero to be input
-- as of now it is possible to open multiple 'GraphWindows', it should be disabled (switch to JDialog?)
-- add feature to choose console or GUI input method at the start of the program
+- dialog at the end whether to terminate or input again
+- dialog to switch from console to GUI
