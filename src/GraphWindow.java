@@ -12,6 +12,7 @@ public class GraphWindow {
 	
 	public JFrame getThisFrame() {
 		
+		frame.setVisible(true);
 		return frame;
 	}
 	
@@ -65,6 +66,6 @@ public class GraphWindow {
 		frame.setSize(400,200);
 		//frame.pack();
 		frame.setTitle("Graph Window");
-		frame.setVisible(true);
+		frame.setVisible(false);
 	}
 }

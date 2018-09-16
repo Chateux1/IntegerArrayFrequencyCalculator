@@ -7,5 +7,6 @@ public class Main {
 		int[] frequencies = {1,1,1,0,2,0,0,1,1};
 		
 		GraphWindow testGraphWindow = new GraphWindow(values, frequencies);	
+		testGraphWindow.getThisFrame();
 	}
 }
