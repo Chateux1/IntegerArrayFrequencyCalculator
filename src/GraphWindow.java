@@ -10,6 +10,11 @@ public class GraphWindow {
 	private JTable table;
 	private JPanel panel;
 	
+	public JFrame getThisFrame() {
+		
+		return frame;
+	}
+	
 	private void setTableData(int maxFrequency, int numberOfValues, int[] frequencies) {
 		
 		for (int i = 0; i < numberOfValues; i++) {
