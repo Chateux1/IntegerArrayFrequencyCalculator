@@ -12,15 +12,15 @@ public class GraphWindow {
 	
 	private void setTableData(int maxFrequency, int numberOfValues, int[] frequencies) {
 		
-		for (int i = 0; i < numberOfValues; i++) {
+		for (int i = 1; i <= numberOfValues; i++) {
 			
-			table.getModel().setValueAt(i, maxFrequency, i);
+			table.getModel().setValueAt(i, maxFrequency, i-1);
 				
 			int frequency = frequencies[i];
 			for (int j = maxFrequency; j > 0; j--) {
 				
 				if (frequency > 0) {
-					table.getModel().setValueAt("*", j-1, i);
+					table.getModel().setValueAt("*", j-1, i-1);
 					frequency--;
 				}
 			}
@@ -43,14 +43,14 @@ public class GraphWindow {
 	public GraphWindow(int[] values, int[] frequencies) {
 						
 		int maxFreq = Arrays.stream(frequencies).max().getAsInt();
-		int columns = Arrays.stream(values).max().getAsInt()+1;
+		int columns = Arrays.stream(values).max().getAsInt();
 		
 		DefaultTableModel model = new DefaultTableModel(maxFreq+1, columns) ;
 		table = new JTable(model);
 		table.setTableHeader(null);
 		table.setShowGrid(false);
 		table.setEnabled(false);
-		table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setTableData(maxFreq, columns, frequencies);
 		resizeTableColumns(20, columns);
 		
