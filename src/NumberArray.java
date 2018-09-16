@@ -27,6 +27,10 @@ public class NumberArray {
 		return originalArray.length;
 	}
 	
+	public int[] getOriginalArray() {
+		return originalArray;
+	}
+	
 	public int getNumberOfValues() {
 		return numberOfValues;
 	}
@@ -64,6 +68,8 @@ public class NumberArray {
             setIncreaseFrequency(indexFromValue);
         }
 	}
+	
+	public NumberArray() {}
 	
 	public NumberArray(int[] numberArray) {
 		originalArray = new int[numberArray.length];

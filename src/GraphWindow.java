@@ -10,17 +10,11 @@ public class GraphWindow {
 	private JTable table;
 	private JPanel panel;
 	
-	public JFrame getThisFrame() {
-		
-		frame.setVisible(true);
-		return frame;
-	}
-	
 	private void setTableData(int maxFrequency, int numberOfValues, int[] frequencies) {
 		
 		for (int i = 0; i < numberOfValues; i++) {
 			
-			table.getModel().setValueAt(i+1, maxFrequency, i);
+			table.getModel().setValueAt(i, maxFrequency, i);
 				
 			int frequency = frequencies[i];
 			for (int j = maxFrequency; j > 0; j--) {
@@ -38,34 +32,36 @@ public class GraphWindow {
 		for (int i = 0; i < columnCount; i++) {
 			
 			table.getColumnModel().getColumn(i).setPreferredWidth(width);
-			DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-			rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-			table.getColumnModel().getColumn(i).setCellRenderer(rightRenderer);
+			DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+			table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
 		}
 	}
+
+	public GraphWindow() {}
 	
 	public GraphWindow(int[] values, int[] frequencies) {
 						
 		int maxFreq = Arrays.stream(frequencies).max().getAsInt();
-		int columns = values.length;
+		int columns = Arrays.stream(values).max().getAsInt()+1;
 		
-		DefaultTableModel model = new DefaultTableModel(maxFreq+1, values.length) ;
+		DefaultTableModel model = new DefaultTableModel(maxFreq+1, columns) ;
 		table = new JTable(model);
 		table.setTableHeader(null);
 		table.setShowGrid(false);
+		table.setEnabled(false);
 		table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
 		setTableData(maxFreq, columns, frequencies);
-		resizeTableColumns(20, values.length);
+		resizeTableColumns(20, columns);
 		
 		panel = new JPanel(new BorderLayout());
 		panel.add(table);
 		
 		frame = new JFrame();
 		frame.getContentPane().add(panel);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400,200);
-		//frame.pack();
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.pack();
 		frame.setTitle("Graph Window");
-		frame.setVisible(false);
+		frame.setVisible(true);
 	}
 }

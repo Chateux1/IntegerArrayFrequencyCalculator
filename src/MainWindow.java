@@ -7,13 +7,15 @@ import javax.swing.*;
 public class MainWindow extends JFrame {
 	
 	public String inputCorrect;
+	private String inputError = "none";
+	private boolean inputReset = true;
 	private JLabel inputInfo, userData;
 	private JTextField inputField;
 	private JButton enterButton, resetButton, continueButton;
 	private GroupLayout layout;
-	private int[] inputArrayOfNumbers;
+	private static int[] inputArrayOfNumbers;
 	
-	public int[] getUserInput() {
+	public static int[] getUserInput() {
 		
 		return inputArrayOfNumbers;
 	}
@@ -62,20 +64,33 @@ public class MainWindow extends JFrame {
 		//equal button size
 		layout.linkSize(SwingConstants.HORIZONTAL, enterButton, continueButton, resetButton);
 		
+		continueButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				if (inputError == "none" && inputReset == false) {
+					NumberArray testNumber = new NumberArray(MainWindow.getUserInput());				
+					new GraphWindow(testNumber.getOriginalArray(), testNumber.getFrequencies());			
+				} 
+			}
+		});
+		
 		resetButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				
 				    userData.setText("");
 				    inputField.setText("");
+				    inputReset = true;
 			}
 		});
+		
 		enterButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				//split entered string to array of strings
-				String inputError = "none";
+				//split the user string to array of strings
+				inputError = "none";
 				String inputString = inputField.getText();
 				String[] inputArrayOfStrings = inputString.split(",");
 				inputArrayOfNumbers = new int[inputArrayOfStrings.length];
@@ -91,11 +106,11 @@ public class MainWindow extends JFrame {
 				}
 				
 				//case handling
-				//TO DO: check if too many inputs, check if too big inputs
 				switch(inputError) 
 				{
 				//if no error, create an arrays of integers
 				case "none":
+						inputReset = false;
 						inputCorrect = Arrays.stream(inputArrayOfNumbers)
 	                	.mapToObj(String::valueOf)
 	                	.collect(Collectors.joining(", "));
@@ -108,6 +123,7 @@ public class MainWindow extends JFrame {
 				case "default":
 					userData.setText("No error");
 				}
+				
 			}
 		});
 		
@@ -116,6 +132,5 @@ public class MainWindow extends JFrame {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-		
 	}
 }
